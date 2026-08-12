@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -28,7 +28,7 @@ public class UserController {
     public ResponseEntity<UserDto> getUserById(
             @RequestHeader("Authorization") String jwt,
             @PathVariable Long id
-    ) throws UserException {
+    ) throws UserException, Exception {
         User user = userService.getUserById(id);
         return ResponseEntity.ok(UserMapper.toDTO(user));
     }
