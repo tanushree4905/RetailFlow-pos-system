@@ -1,5 +1,6 @@
 package com.RetailFlow.service;
 
+import com.RetailFlow.domain.StoreStatus;
 import com.RetailFlow.exceptions.UserException;
 import com.RetailFlow.modal.Store;
 import com.RetailFlow.modal.User;
@@ -16,4 +17,6 @@ public interface StoreService {
     StoreDTO updateStore(Long id, StoreDTO storeDTO) throws Exception;
     void deleteStore(Long id) throws UserException;
     StoreDTO getStoreByEmployee() throws UserException;
+
+    StoreDTO moderateStore(Long id, StoreStatus status) throws Exception;
 }
