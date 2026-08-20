@@ -1,5 +1,6 @@
 package com.RetailFlow.mapper;
 
+import com.RetailFlow.modal.Category;
 import com.RetailFlow.modal.Product;
 import com.RetailFlow.modal.Store;
 import com.RetailFlow.payload.dto.ProductDTO;
@@ -15,6 +16,7 @@ public class ProductMapper {
                 .mrp(product.getMrp())
                 .sellingPrice(product.getSellingPrice())
                 .brand(product.getBrand())
+                .category(CategoryMapper.toDTO(product.getCategory()))
                 .storeId(product.getStore()!=null?product.getStore().getId():null)
                 .image(product.getImage())
                 .createdAt(product.getCreatedAt())
@@ -23,9 +25,13 @@ public class ProductMapper {
                 //.categoryId(product.getId())
     }
 
-    public static Product toEntity(ProductDTO productDTO, Store store) {
+    public static Product toEntity(ProductDTO productDTO,
+                                   Store store,
+                                   Category category) {
         return  Product.builder()
                 .name(productDTO.getName())
+                .store(store)
+                .category(category)
                 .sku(productDTO.getSku())
                 .description(productDTO.getDescription())
                 .mrp(productDTO.getMrp())
