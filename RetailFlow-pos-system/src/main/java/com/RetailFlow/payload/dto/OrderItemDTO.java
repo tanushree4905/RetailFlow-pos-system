@@ -1,0 +1,25 @@
+package com.RetailFlow.payload.dto;
+
+import com.RetailFlow.modal.Order;
+import com.RetailFlow.modal.Product;
+import jakarta.persistence.ManyToOne;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class OrderItemDTO {
+
+    private Long id;
+
+    private Integer quantity;
+
+    private Double price;
+
+    private ProductDTO product;
+
+    private Long productId;
+
+    private Long orderId;
+
+}
